@@ -1,6 +1,7 @@
 # Dyad Keyboard
 
 ![alt text](images/dyad-overview.png)
+![alt text](images/dyad-stowed.png)
 *A compact, wireless, split ergonomic keyboard designed with travel and simplicity in mind.*
 
 ## Features
