@@ -1,0 +1,438 @@
+units:
+  kx: cx
+  ky: cy
+  px: 1.2
+  py: 1.2
+  r_fillet: 1
+  board_x: 4.7775
+  board_y: -11
+points:
+  key:
+    padding: ky
+    spread: -kx
+    footprints:
+      choc_hotswap:
+        type: choc
+        nets:
+          from: =column_net
+          to: =row_net
+        params:
+          keycaps: false
+          reverse: false
+          hotswap: false
+  zones:
+    main:
+      rows:
+        bottom:
+        home:
+        top:
+      columns:
+        pinky:
+          rows:
+            top:
+              row_net: R0P
+              column_net: C4v
+            home:
+              row_net: R1P
+              column_net: C4v
+            bottom:
+              row_net: R2P
+              column_net: C4v
+        ring:
+          key.stagger: 13
+          rows:
+            top:
+              row_net: R0R
+              column_net: C3v
+            home:
+              row_net: R1R
+              column_net: C3v
+            bottom:
+             row_net: R2R
+             column_net: C3v
+        middle:
+          key.stagger: 5.5
+          rows:
+            top:
+              row_net: R0M
+              column_net: C2v
+            home:
+              row_net: R1M
+              column_net: C2v
+            bottom:
+              row_net: R2M
+              column_net: C2v
+        index:
+          key.stagger: -5.5
+          rows:
+            top:
+              row_net: R0I
+              column_net: C1
+            home:
+              row_net: R1I
+              column_net: C1
+            bottom:
+              row_net: R2I
+              column_net: C1
+        inner:
+          key.stagger: -2.5
+          rows:
+            top:
+              row_net: R0i
+              column_net: C0
+            home:
+              row_net: R1i
+              column_net: C0
+            bottom:
+              row_net: R2i
+              column_net: C0
+    thumbfan:
+      anchor:
+        ref: main_inner_bottom
+        shift: [0,-29.2]
+      rows:
+        home:
+      columns:
+        inner:
+          rows:
+            home:
+              row_net: R3i
+              column_net: C0
+              rotate: 180
+        outer:
+          rows:
+            home:
+              row_net: R3I
+              column_net: C1
+              spread: kx
+              rotate: 180
+outlines:
+  board_left:
+    - what: polygon # all borders
+      points:
+        - ref: main_pinky_top
+          shift: [0.5ky-px, 0.5ky-py]
+        - ref: main_pinky_top
+          shift: [-0.5ky-px-1, 0.5ky-py]
+        - ref: main_ring_top
+          shift: [0.5ky-px, 0.5ky-py]
+        - ref: main_ring_top
+          shift: [-0.5ky-px-1, 0.5ky-py]
+        - ref: main_middle_top
+          shift: [0.5ky-px, 0.5ky-py]
+        - ref: main_middle_top
+          shift: [-0.5ky+px, 0.5ky-py]
+        - ref: main_index_top
+          shift: [0.5ky+px+1, 0.5ky-py]
+        - ref: main_index_top
+          shift: [-0.5ky+px, 0.5ky-py]
+        - ref: main_inner_top
+          shift: [0.5ky+px+1, 0.5ky-py]
+        - ref: main_inner_top
+          shift: [-0.5ky+px, 0.5ky-py]
+        - ref: thumbfan_inner_home
+          shift: [0.5ky-px, 0.5ky-py]
+        - ref: thumbfan_outer_home
+          shift: [-0.5ky+px, 0.5ky-py]
+        - ref: main_pinky_bottom
+          shift: [-0.5ky+px, -0.5ky+py]
+        - ref: main_pinky_bottom
+          shift: [0.5ky-px, -0.5ky+py]
+  board_left_cutout:
+    - what: circle # all borders
+      radius: 50.85695
+      where:
+          ref: main_pinky_bottom
+          shift: [-0.5ky+px, -0.5ky+py-50.85695]
+  cutout:
+    - what: outline
+      name: board_left
+    - what: outline
+      operation: subtract
+      name: board_left_cutout
+      fillet: r_fillet
+pcbs:
+  Dyad:
+    outlines:
+      main:
+        outline: cutout
+    footprints:
+      choc_hotswap:
+        what: choc_outlines
+        where: true
+        params:
+          keycaps: false
+          reverse: false
+          hotswap: false
+          from: "{{column_net}}"
+          to: "{{row_net}}"
+      battery_socket:
+        what: SM02_STSS_TB
+        where:
+          ref: main_index_bottom
+          shift: [2,-17.2]
+          rotate: -90
+        params:
+          pos: TERMP
+          neg: BATM
+      reed_switch:
+        what: mk17_b_3
+        where:
+          ref: main_pinky_home
+          shift: [-3.1,0]
+          rotate: -90
+        params:
+          from: TERMP
+          to: PS_1
+      power_switch:
+        what: pcm12
+        where:
+          ref: main_pinky_bottom
+          shift: [-2, -5]
+          rotate: 90
+        params:
+          three: PS_1
+          two: BATP
+      microcontroller:
+        what: Seeed_Studio_XIAO_nRF52840
+        where:
+          ref: thumbfan_inner_home
+          shift: [-board_x,board_y]
+          rotate: 0
+        params:
+          d6: R0
+          d5: R1
+          d4: R2
+          d3: C2v
+          d2: C3v
+          d1: C4v
+          d0: D6
+          d8: C1
+          d9: R3
+          d10: C0
+          GND_1: GND
+          rst: RST
+          batp: BATP
+          batm: BATM
+      reset_button:
+        what: b3u1000p
+        where:
+          ref: thumbfan_outer_home
+          shift: [-0.6, -10]
+          rotate: 180
+        params:
+          from: RST
+          to: GND
+      reed_short:
+        what: bridge
+        where:
+          ref: main_pinky_home
+          shift: [-1,-7]
+          rotate: 180
+        params:
+          from: TERMP
+          to: PS_1
+      mount1:
+        what: mount
+        where:
+          ref: thumbfan_outer_home
+          shift: [-0.6,-5.5]
+      mount2:
+        what: mount
+        where:
+          ref: main_pinky_top
+          shift: [-2.6,-6]
+      pin1:
+        what: spring_pin
+        where:
+          ref: thumbfan_inner_home
+          shift: [-0.5ky+px+2.5,0.5ky-py-2.5]
+      pin2:
+        what: spring_pin
+        where:
+          ref: main_index_top
+          shift: [-0.5ky+px+2.5,0.5ky-py-2.5]
+      pin3:
+        what: spring_pin
+        where:
+          ref: main_pinky_top
+          shift: [-0.5ky+px+2.5,0.5ky-py-2.5]
+      pin4:
+        what: spring_pin
+        where:
+          ref: main_pinky_bottom
+          shift: [0.5ky-px-2.5,-0.5ky+py+2.5]
+      diode1:
+        what: diode
+        where:
+          ref: main_index_top
+          shift: [-9,1]
+          rotate: 0
+        params:
+          from: R0i
+          to: R0
+      diode2:
+        what: diode
+        where:
+          ref: main_index_top
+          shift: [-9,-1]
+          rotate: 0
+        params:
+          from: R0I
+          to: R0
+      diode3:
+        what: diode
+        where:
+          ref: main_index_top
+          shift: [-9,-3]
+          rotate: 0
+        params:
+          from: R0M
+          to: R0
+      diode4:
+        what: diode
+        where:
+          ref: main_index_top
+          shift: [-9,-5]
+          rotate: 0
+        params:
+          from: R0R
+          to: R0
+      diode5:
+        what: diode
+        where:
+          ref: main_index_top
+          shift: [-9,-7]
+          rotate: 0
+        params:
+          from: R0P
+          to: R0
+      diode6:
+        what: diode
+        where:
+          ref: main_index_home
+          shift: [-9,1]
+          rotate: 0
+        params:
+          from: R1i
+          to: R1
+      diode7:
+        what: diode
+        where:
+          ref: main_index_home
+          shift: [-9,-1]
+          rotate: 0
+        params:
+          from: R1I
+          to: R1
+      diode8:
+        what: diode
+        where:
+          ref: main_index_home
+          shift: [-9,-3]
+          rotate: 0
+        params:
+          from: R1M
+          to: R1
+      diode9:
+        what: diode
+        where:
+          ref: main_index_home
+          shift: [-9,-5]
+          rotate: 0
+        params:
+          from: R1R
+          to: R1
+      diode10:
+        what: diode
+        where:
+          ref: main_index_home
+          shift: [-9,-7]
+          rotate: 0
+        params:
+          from: R1P
+          to: R1
+      diode11:
+        what: diode
+        where:
+          ref: main_index_bottom
+          shift: [-9,1]
+          rotate: 0
+        params:
+          from: R2i
+          to: R2
+      diode12:
+        what: diode
+        where:
+          ref: main_index_bottom
+          shift: [-9,-1]
+          rotate: 0
+        params:
+          from: R2I
+          to: R2
+      diode13:
+        what: diode
+        where:
+          ref: main_index_bottom
+          shift: [-9,-3]
+          rotate: 0
+        params:
+          from: R2M
+          to: R2
+      diode14:
+        what: diode
+        where:
+          ref: main_index_bottom
+          shift: [-9,-5]
+          rotate: 0
+        params:
+          from: R2R
+          to: R2
+      diode15:
+        what: diode
+        where:
+          ref: main_index_bottom
+          shift: [-9,-7]
+          rotate: 0
+        params:
+          from: R2P
+          to: R2
+      diode16:
+        what: diode
+        where:
+          ref: thumbfan_outer_home
+          shift: [8,2]
+          rotate: 90
+        params:
+          from: R3I
+          to: R3
+      diode17:
+        what: diode
+        where:
+          ref: thumbfan_outer_home
+          shift: [10,2]
+          rotate: 90
+        params:
+          from: R3i
+          to: R3
+      via1:
+        what: via
+        where:
+          ref: main_middle_bottom
+          shift: [2,-3.5]
+        params:
+          net: C2v
+      via2:
+        what: via
+        where:
+          ref: main_middle_bottom
+          shift: [0,-4]
+        params:
+          net: C3v
+      via3:
+        what: via
+        where:
+          ref: main_middle_bottom
+          shift: [-2,-4.5]
+        params:
+          net: C4v
