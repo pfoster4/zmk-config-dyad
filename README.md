@@ -1,6 +1,6 @@
 # Dyad Keyboard
 
-![[images/dyad-overview.png]]
+![alt text](images/dyad-overview.png)
 *A compact, wireless, split ergonomic keyboard designed with travel and simplicity in mind.*
 
 ## Features
@@ -12,11 +12,19 @@
 - **Ambients Silent Choc switches and LDSA low-profile keycaps**
 
 ## Table of Contents
+- [Keymap](#keymap)
 - [Parts List](#parts-list)
 - [Build Guide](#build-guide)
 - [Firmware Setup](#firmware-setup)
 - [How to Flash Firmware](#how-to-flash-firmware)
 - [Helpful Resources](#helpful-resources)
+
+## Keymap
+This keymap is a modified version of [Miryoku](https://github.com/manna-harbour/miryoku), a layered layout architecture intended for 3x5 keyboard halves with three thumb keys. We need to find a way to replicate the third thumb key Dyad only has two thumb keys. This is accomplished by using key combos. Tapping or holding both thumb keys on one half will perform the same behavior as the missing third thumb key. Additional combos are added for convenience. 
+
+This keymap has six non-default layers to access full functionality of the keyboard: a number layer, symbol layer, function key layer, mouse control layer, navigation layer, and media control layer. Each layer is accessed by holding down the thumb keys as shown in the keymap diagram below. 
+
+![alt text](images/keymap.png)
 
 ## Parts List
 Many of these components have acceptable alternatives, just double check the PCB footprint requirements.
