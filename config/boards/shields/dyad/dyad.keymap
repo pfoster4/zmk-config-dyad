@@ -75,7 +75,7 @@
 
         F5_combo {
             bindings = <&kp F5>;
-            key-positions = <24 14>;
+            key-positions = <17 7>;
         };
 
         prtscn_combo {
