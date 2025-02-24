@@ -1,7 +1,7 @@
 # Dyad Keyboard - Build Guide
-Intro blurb here
+This section is still being filled out. 
 
-The main readme page can be found [here](https://github.com/dyad-keeb/zmk-config-dyad/tree/main/README.md).
+[Link to main page](https://github.com/dyad-keeb/zmk-config-dyad/tree/main/README.md).
 
 ## Table of Contents
 - [Tools List](#tools-list)
@@ -15,7 +15,7 @@ The main readme page can be found [here](https://github.com/dyad-keeb/zmk-config
 - [Trim the Protruding Pins that will be Behind the Battery](#pin-trim)
 - [Flash the Firmware](#firmware-flash)
 - [Insert the Magnets and Install the Case Backs](#install-case)
-- [Enjoy your Keyboard, and Adjust the Keymap as Needed!](#enjoy)
+- [Enjoy your Keyboard!](#enjoy)
 
 ## Tools List
 Many of these components have acceptable alternatives, just be sure to double check the PCB footprint requirements.
@@ -81,7 +81,7 @@ Many of these components have acceptable alternatives, just be sure to double ch
 ![alt text](images/dyad-bottom.png)
 
 
-## Enjoy your Keyboard, and Adjust the Keymap as Needed!
+## Enjoy your Keyboard!
 
 ![alt text](images/dyad-overview.png)
 ![alt text](images/dyad-back.png)
