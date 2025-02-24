@@ -415,6 +415,7 @@ pcbs:
         params:
           from: R3i
           to: R3
+      # NOTE: these via footprints are incorrect! Don't rely on them. I manually deleted and replaced them with real vias directly in KiCAD.
       via1:
         what: via
         where:

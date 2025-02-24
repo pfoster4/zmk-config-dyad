@@ -1,3 +1,7 @@
+// This via file isn't right!!!
+// I only realized this after routing my traces in KiCAD. Luckily, it's super easy to delete the bad footprint and replace directly in KiCAD.
+// Proceed at your own risk with this footprint. 
+
 // Via
 // Nets
 //		net: the net this via should be connected to
