@@ -18,11 +18,11 @@ The main readme page can be found [here](https://github.com/dyad-keeb/zmk-config
 - [Enjoy your Keyboard, and Adjust the Keymap as Needed!](#enjoy)
 
 ## Tools List
-Many of these components have acceptable alternatives, just double check the PCB footprint requirements.
+Many of these components have acceptable alternatives, just be sure to double check the PCB footprint requirements.
 
 | Component | Comment |
 |-----------|-------------|
-| Soldering Iron (Duh) | A very fine soldering iron tip is preferred for surface mount connections. |
+| Soldering Iron | A very fine soldering iron tip is preferred for surface mount connections. |
 | Precision Tip Tweezers | These are very useful for orienting and holding the small components. |
 | Hotplate | This is necessary to solder otherwise inaccessible connections between the microcontroller and PCB (I used my gas stove and a piece of aluminum). |
 | Parallel Jaw Pliers | These aren't strictly necessary, but I found them very helpful for installing the press-fit nuts and spring pins into the PCB. |
@@ -89,3 +89,5 @@ Many of these components have acceptable alternatives, just double check the PCB
 
 
 ---
+
+[Back to main README page](https://github.com/dyad-keeb/zmk-config-dyad/tree/main/README.md).

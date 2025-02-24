@@ -30,7 +30,7 @@ Many of these components have acceptable alternatives, just double check the PCB
 
 | Component | Description | Quantity |
 |-----------|-------------|----------|
-| PCBs | Custom-designed FR4 PCB (see pcb folder) | 1x of each half |
+| PCBs | [Custom-designed Dyad PCBs](https://github.com/dyad-keeb/zmk-config-dyad/tree/main/pcb/zip%20files) | 1x of each half |
 | Microcontrollers | [Seeed Studio XIAO nRF52840](https://www.mouser.com/ProductDetail/Seeed-Studio/102010448?qs=Znm5pLBrcAJ5g%252BWAkitg4w%3D%3D&countryCode=US&currencyCode=USD) | 2x (BT) or 3x (Dongle) |
 | Key Switches | [Choc Switches (Ambients Silent Twilights)](https://lowprokb.ca/products/ambients-silent-choc-switches) | 34x |
 | Keycaps | [Low Profile LSDA Caps (1u blanks)](https://lowprokb.ca/collections/keycaps/products/ldsa-low-profile-blank-keycaps) | 34x |
@@ -46,7 +46,7 @@ Many of these components have acceptable alternatives, just double check the PCB
 | Screws | [2-56 Thread x 1/8" Long](https://www.mcmaster.com/92949A174/) | 2x |
 | Grippy Bumpers | [1/4" Dia x 1/16" Thick](https://www.amazon.com/dp/B07R17T68B?ref_=ppx_hzsearch_conn_dt_b_fed_asin_title_2) | 10x |
 | Dongle Adapter | [USB-C male to USB-A male](https://www.amazon.com/dp/B0CFLWC8G1?ref=ppx_yo2ov_dt_b_fed_asin_title) | 1x |
-| 3D Printed Cases | [My preferred filament](https://www.amazon.com/dp/B08142W8XV?ref=ppx_yo2ov_dt_b_fed_asin_title) | ~60g |
+| 3D Printed Cases | [Case files](https://github.com/dyad-keeb/zmk-config-dyad/tree/main/case) and [my preferred filament](https://www.amazon.com/dp/B08142W8XV?ref=ppx_yo2ov_dt_b_fed_asin_title) | ~60g |
 
 ## Build Guide
 Read the Dyad build guide [here](https://github.com/dyad-keeb/zmk-config-dyad/tree/main/build-guide.md).
