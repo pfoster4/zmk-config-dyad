@@ -7,16 +7,32 @@
 ## Features
 - **Wireless w/ Dongle** powered by ZMK firmware for work computers without bluetooth
 - **34-key split layout** with 3x5 columnn staggered keys and two thumb keys per half
-- **Super long battery life (9-12 month estimate)** with 850 mAh batteries in each half as peripherals
-- **Simple and clean aesthetic** with components hidden out of sight and no unnecessary features
-- **Reed switch + magnet system** for conventient stowing and power control
+- **Super long battery life estimated at 9-12 months** with 850 mAh batteries in each half as peripherals 
+- **Simple and clean look** with components hidden out of sight and no unnecessary features
+- **Reed switch + magnets** for travel convenience 
 - **Ambients Silent Choc switches and LDSA low-profile keycaps**
 
 ## Table of Contents
+- [Why does this Exist?](#why-me)
 - [Keymap](#keymap)
 - [Parts List](#parts-list)
 - [Build Guide](#build-guide)
 - [Helpful Resources](#helpful-resources)
+
+## Why does this Exist?
+I designed Dyad because I couldn't find another keyboard that had exactly what I needed, without all the extra stuff I didn't. Also, let's be honest–if you're here, you either have the same sickness as me, or a morbid (and very niche) sense of curiosity. 
+
+I travel a lot for work, and have been using a Piantor keyboard for the last year or so. Unfortunately, I plugged it in with the TRRS cable only partially inserted and fried one of the microcontrollers. I decided to take the opportunity as an excuse to design my own board from scratch. 
+
+Wires are cumbersome and can be annoying. Obviously this thing needs to be wireless. I move around between computers at work, and none of them have built in bluetooth. Using a dongle solves this, making both halves peripherals instead of host devices. This balances power usage and extends battery life. I found the Seeed Studio XIAO nRF52840 microcontroller to be a great option for this. It's super small, has BLE functionality, and is relatively cheap. I found a small USB-C to USB-A adapter that fit inside a recess I put in the case, so everything packs together nicely. 
+
+I wanted to maximize my battery life. I like simple keyboards. Extra features like OLEDs are cool, but they still draw power and reduce battery life. Dyad is intentionally very simple in its features, which helps strive towards a keyboard that rarely needs charging. 
+
+I didn't like having an exposed microcontroller on the front of the board. It's very easy to short the pins with a drop of coffee (oops), and the microcontoller takes up precious real estate for what could otherwise be a smaller profile. Instead of mounting the microcontroller on top like most builds, I soldered it directly to the back of the PCB–no headers, no cutouts, no exposed pins. The XIAO board does require diodes at this key count, but there's still plenty of room to fit a 850 mAh battery, and get a subtle but noticable five degree tenting angle for better wrist ergonomics. 
+
+Finally, I like the idea of magnets holding the two keyboard halves together like a few other board designers have done. I wanted to take it a step further and introduce reed switches in a normally closed configuration to the power circuits. This makes it impossible to forget to leave the board on or accidentally send keypresses when traveling, since the circuit will switch open whenever the two keyboard halves are magnetically latched together. Is this a bit gimmicky? Sure. But is it useful? I think so! If you'd prefer, you can bridge the dedicated solder pads instead of using a reed switch, and just rely on the normal slider switch. The magnetic attachment and automatic power management make Dyad especially convenient for travel–no worrying about whether it's on or off. 
+
+The result? A wireless, travel-friendly, durable split keyboard that stays charged for ages and looks pretty good doing it. 
 
 ## Keymap
 This keymap is a modified version of [Miryoku](https://github.com/manna-harbour/miryoku), a layered layout architecture intended for 3x5 keyboard halves with three thumb keys. We need to find a way to replicate the third thumb key Dyad only has two thumb keys. This is accomplished by using key combos. Tapping or holding both thumb keys on one half will perform the same behavior as the missing third thumb key. Additional combos are added for convenience.
@@ -26,7 +42,7 @@ This keymap has six non-default layers to access full functionality of the keybo
 ![alt text](images/keymap2.png)
 
 ## Parts List
-Many of these components have acceptable alternatives, just double check the PCB footprint requirements.
+Many of these components have acceptable alternatives. Be sure to double check the PCB footprint requirements before deviating.
 
 | Component | Description | Quantity |
 |-----------|-------------|----------|
