@@ -16,8 +16,6 @@
 - [Keymap](#keymap)
 - [Parts List](#parts-list)
 - [Build Guide](#build-guide)
-- [Firmware Setup](#firmware-setup)
-- [How to Flash Firmware](#how-to-flash-firmware)
 - [Helpful Resources](#helpful-resources)
 
 ## Keymap
@@ -34,8 +32,8 @@ Many of these components have acceptable alternatives, just double check the PCB
 |-----------|-------------|----------|
 | PCBs | Custom-designed FR4 PCB (see pcb folder) | 1x of each half |
 | Microcontrollers | [Seeed Studio XIAO nRF52840](https://www.mouser.com/ProductDetail/Seeed-Studio/102010448?qs=Znm5pLBrcAJ5g%252BWAkitg4w%3D%3D&countryCode=US&currencyCode=USD) | 2x (BT) or 3x (Dongle) |
-| Key Switches | [Choc Switches](https://lowprokb.ca/products/ambients-silent-choc-switches) | 34x |
-| Keycaps | [Low Profile LSDA Caps](https://lowprokb.ca/collections/keycaps/products/ldsa-low-profile-blank-keycaps) | 34x |
+| Key Switches | [Choc Switches (Ambients Silent Twilights)](https://lowprokb.ca/products/ambients-silent-choc-switches) | 34x |
+| Keycaps | [Low Profile LSDA Caps (1u blanks)](https://lowprokb.ca/collections/keycaps/products/ldsa-low-profile-blank-keycaps) | 34x |
 | Diodes | [SMD Diodes](https://www.mouser.com/ProductDetail/Micro-Commercial-Components-MCC/MMSZ5246B-TP?qs=ZNK0BnemlqEr9Va1g49r5g%3D%3D&countryCode=US&currencyCode=USD) | 34x |
 | Power Switches | [SLW-66527511-SMT-TR](https://www.mouser.com/ProductDetail/Same-Sky/SLW-66527511-SMT-TR?qs=1Kr7Jg1SGW%252BCp04CqrZlUg%3D%3D&countryCode=US&currencyCode=USD) | 2x |
 | Batteries | [ASR00036 850 mAh](https://www.mouser.com/ProductDetail/TinyCircuits/ASR00036?qs=byeeYqUIh0Mizxtsp6GM5A%3D%3D) | 2x |
@@ -51,29 +49,7 @@ Many of these components have acceptable alternatives, just double check the PCB
 | 3D Printed Cases | [My preferred filament](https://www.amazon.com/dp/B08142W8XV?ref=ppx_yo2ov_dt_b_fed_asin_title) | ~60g |
 
 ## Build Guide
-Section in progress.
-1. **Solder Components**
-   - Attach diodes, microcontroller, and reed switches.
-   - Install magnets for power switching.
-2. **Assemble the Case**
-3. **Install Switches and Keycaps**
-4. **Test Connections**
-   - Verify each key press is registered correctly.
-5. **Flash Firmware** (see [How to Flash Firmware](#how-to-flash-firmware))
-
-## Firmware Setup
-Section in progress.
-- This keyboard runs **ZMK Firmware**.
-- Modify your keymap in `config`.
-- More details in [ZMK Docs](https://zmk.dev/docs).
-
-## How to Flash Firmware
-Section in progress.
-1. Download the latest `.uf2` firmware build.
-2. Connect your keyboard via USB.
-3. Place it in bootloader mode (double-tap reset button).
-4. Drag and drop the firmware file onto the device.
-5. Reboot and test.
+Read the Dyad build guide [here](https://github.com/dyad-keeb/zmk-config-dyad/tree/main/build-guide.md).
 
 ## Helpful Resources
 - [Dyad CAD files](https://cad.onshape.com/documents/7f572f5029fef8eead929f6f/w/3338eb399b68b4bec0be7aa8/e/8d690b2dc0af4d791bdff9ef?renderMode=1&uiState=67ba591a8b0f840d79069d80)
