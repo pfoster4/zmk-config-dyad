@@ -59,7 +59,7 @@ Many of these components have acceptable alternatives. Be sure to double check t
 | Magnets | [Magnets, 10mm x 5mm x 2mm](https://www.amazon.com/dp/B0B6VKY7Y2?ref_=ppx_hzsearch_conn_dt_b_fed_asin_title_4) | 10x |
 | Press-Fit Nuts | [2-56 Thread for 0.147" Dia Hole](https://www.mcmaster.com/94648A310/) | 4x |
 | Spring Pins | [1/16" Dia x 3/16" Long](https://www.mcmaster.com/98296A015/) | 8x |
-| Screws | [2-56 Thread x 1/8" Long](https://www.mcmaster.com/92949A174/) | 2x |
+| Screws | [2-56 Thread x 1/8" Long](https://www.mcmaster.com/92949A174/) | 4x |
 | Grippy Bumpers | [1/4" Dia x 1/16" Thick](https://www.amazon.com/dp/B07R17T68B?ref_=ppx_hzsearch_conn_dt_b_fed_asin_title_2) | 10x |
 | Dongle Adapter | [USB-C male to USB-A male](https://www.amazon.com/dp/B0CFLWC8G1?ref=ppx_yo2ov_dt_b_fed_asin_title) | 1x |
 | 3D Printed Cases | [Case files](https://github.com/dyad-keeb/zmk-config-dyad/tree/main/case) and [my preferred filament](https://www.amazon.com/dp/B08142W8XV?ref=ppx_yo2ov_dt_b_fed_asin_title) | ~60g |
