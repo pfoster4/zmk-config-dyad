@@ -170,7 +170,7 @@ If closing a switch doesn’t produce the expected result, it’s time for some 
 - You can also use DC voltage mode to check the electrical potential at each pin and observe how the voltage changes when a switch is closed.  
 - Reference the KiCAD files or the screenshot below to help with troubleshooting:  
 
-![alt text](images/kicad.png)  
+![alt text](images/kiCAD.png)  
 
 If everything checks out, congratulations! Your board is properly set up. Now, it's finally time to install the key switches.  
 
