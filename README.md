@@ -13,7 +13,7 @@
 - **Ambients Silent Choc switches and LDSA low-profile keycaps**
 
 ## Table of Contents
-- [Why does this Exist?](#why-me)
+- [Why does this Exist?](#why-does-this-exist?)
 - [Keymap](#keymap)
 - [Parts List](#parts-list)
 - [Build Guide](#build-guide)
