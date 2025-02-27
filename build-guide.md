@@ -10,16 +10,16 @@ Take your time, double-check each step, and enjoy the process. Let’s get start
 
 ## Table of Contents
 - [Tools List](#tools-list)
-- [Install the Press-fit Nuts](#press-nuts)
-- [Install the Spring Pins](#spring-pins)
-- [Solder Diodes, Power and Reset Switch, and Battery Connector](#pre-stove-solder)
-- [Pre-tin the Microcontroller Pads](#microcontroller-pretin)
-- [Solder on the Microcontroller with a "Hotplate"](#stove-time)
-- [Check that Everything is Working](#checkouts)
-- [Solder in the Key Switches](#key-switches)
-- [Trim the Protruding Pins Behind the Battery](#pin-trim)
-- [Insert the Magnets and Install the Case Backs](#install-case)
-- [Enjoy your Keyboard!](#enjoy)
+- [Install the Press-fit Nuts](#install-the-press-fit-nuts)
+- [Install the Spring Pins](#install-the-spring-pins)
+- [Solder Diodes, Power and Reset Switch, and Battery Connector](#solder-diodes-power-and-reset-switch-and-battery-connector)
+- [Pre-tin the Microcontroller Pads](#pre-tin-the-microcontroller-pads)
+- [Solder on the Microcontroller with a "Hotplate"](#solder-on-the-microcontroller-with-a-hotplate)
+- [Check that Everything is Working](#check-that-everything-is-working)
+- [Solder in the Key Switches](#solder-in-the-key-switches)
+- [Trim the Protruding Pins Behind the Battery](#trim-the-protruding-pins-behind-the-battery)
+- [Insert the Magnets and Install the Case Backs](#insert-the-magnets-and-install-the-case-backs)
+- [Enjoy your Keyboard!](#enjoy-your-keyboard!)
 
 ## Tools List
 
