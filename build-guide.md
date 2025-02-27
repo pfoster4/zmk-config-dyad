@@ -1,5 +1,10 @@
 # Dyad Keyboard - Build Guide
-This section is still being filled out. 
+
+Welcome to the build guide for your Dyad keyboard! This guide will take you through every step, from preparing the PCB to final assembly. 
+
+You'll be soldering surface-mounted components, installing key switches, flashing firmware, testing connections, and assembling the case. By the end of this guide, you'll have a fully functional, compact, and travel-friendly keyboard designed for comfort and efficiency.  
+
+Take your time, double-check each step, and enjoy the process. Let’s get started!  
 
 [Link to main page](https://github.com/dyad-keeb/zmk-config-dyad/tree/main/README.md).
 
@@ -10,10 +15,9 @@ This section is still being filled out.
 - [Solder Diodes, Power and Reset Switch, and Battery Connector](#pre-stove-solder)
 - [Pre-tin the Microcontroller Pads](#microcontroller-pretin)
 - [Solder on the Microcontroller with a "Hotplate"](#stove-time)
-- [Perform Continuity Tests](#continuity-tests)
+- [Check that Everything is Working](#checkouts)
 - [Solder in the Key Switches](#key-switches)
-- [Trim the Protruding Pins that will be Behind the Battery](#pin-trim)
-- [Flash the Firmware](#firmware-flash)
+- [Trim the Protruding Pins Behind the Battery](#pin-trim)
 - [Insert the Magnets and Install the Case Backs](#install-case)
 - [Enjoy your Keyboard!](#enjoy)
 
@@ -63,6 +67,8 @@ Now we're going to solder everything *except* the microcontroller and key switch
 
 If you're already familiar with using solder paste and hot plates, then you probably don't need to read the next couple sections. You can still read on to get a good laugh out of the scrappy way I got it done with what was on hand.
 
+The component orientation either does it matter or self-explanatory for all of the parts except the diodes. The day is obviously only allow current to flow in one direction, so the keyboard wouldn't work as expected if they're installed backwards. Dyad has the required diode orientation printed into the silk screen layer of the PCB with the standard schematic symbol. All you need to know to get this right is that there is a line printed on the top of the diode (it might be faint, but it's there) which needs to be oriented on the same side as the line in the schematic symbol (the one that the arrow is pointing to). Most micro controllers also have a diode check mode that will allow you to verify the directionality of your diode along with the voltage drop across it.
+
 ### Recommended Soldering Steps  
 
 1. **Pre-tin one half of the pads.** Use a small amount of solder—less is better than too much, since you can always add more later.  
@@ -110,41 +116,134 @@ Once the solder starts to melt, I recommend moving quickly. You just need to ver
 
 Beyond overheating, the biggest risk is leaving the board at an elevated temperature for *too* long. On my first board half, I used the small burner and tried following a hot plate temperature profile I found in a component datasheet. That profile had a target temperature of around 260°C, which I couldn’t even get close to. I ended up holding the board at 150–170°C for about 10 minutes before calling it quits. In hindsight, that was *super* unnecessary—so don’t do that. On the second board half, I used a larger burner, reached ~150°C much faster, and minimized the time spent at elevated temperature.  
 
-The next step is to verify that all components still function properly and that our solder connections are solid.  
+The next step is to verify that everything is working properly and that our solder connections are solid.  
 
-## Perform Continuity Tests
+## Check That Everything Is Working  
 
-![alt text](images/post-board-solder-continuity-tests.png)
+We're getting close to the end of the build, and this is a critical checkpoint—it’ll be much harder to undo/redo things from here. The next assembly step is soldering in the key switches, but if anything is wrong with the components on the back of the board, you’d have to remove *all* the switches to reflow the PCB again. That would be a massive pain. So before moving forward, it's a good idea to flash the firmware and double-check that everything is working as expected.  
 
+### Flash the Firmware  
+
+Flashing the microcontrollers is super straightforward, and there are plenty of online resources covering the process. The basic steps are:  
+
+1. Plug the microcontroller into your computer.  
+2. Double-press the reset button to put the microcontroller into bootloader mode. It should appear as a removable storage device on your computer.  
+3. Drag and drop your `.uf2` firmware file onto the microcontroller. Once the file is loaded, the device should automatically disconnect and be ready to go.  
+
+![alt text](images/ready-for-case-back.png)  
+
+Repeat this process for *all three* microcontrollers: the left half, the right half, and the dongle.  
+
+### Check Battery Functionality  
+
+Before pairing the keyboard halves, we need to make sure the batteries are properly connected and working. Specifically, we want to confirm that each battery can power its respective half independently and that the microcontroller properly charges the battery when plugged into external power.  
+
+1. Plug a battery into both halves of the keyboard. Ensure the connector is oriented correctly and push it in evenly—*don’t* wiggle it back and forth.  
+2. Plug the microcontroller’s USB-C port into your computer.  
+3. Set the board’s power slider switch to the *on* position (toggled toward the microcontroller).  
+
+Now that a battery is connected, power from USB-C should begin charging it. You’ll know this is working if a small green LED on the microcontroller turns on. This light will turn off when the battery is fully charged. Since the batteries likely weren’t fully charged before installation, you should see the green light come on.  
+
+This indicator light is all we need to verify that the battery’s solder joints—sandwiched between the PCB and microcontroller—are solid. The battery should also power the board on its own without external power, which we’ll confirm in the next step.  
+
+### Turning the Keyboard On for the First Time  
+
+Even though the build isn’t finished yet, this is the first moment we’ll see the assembled components working as an actual keyboard.  
+
+The first step is to get all three devices—both keyboard halves and the dongle—to recognize each other.  
+
+1. Plug the dongle into your computer.  
+2. After a couple of seconds, turn on both halves of the keyboard.  
+3. Press the reset button on *both* halves once, simultaneously.  
+
+This should permanently pair all three devices into a single unified keyboard.  
+
+Now for the fun part—testing each key to verify that its section of the circuit is functional. Open a word processor (or any text input field) on your computer. Then, using a piece of wire or a paperclip, touch two key switch thru holes together to simulate a closed switch. You should see a character appear on your screen. Repeat this process for all 34 keys.  
+
+![alt text](images/post-board-solder-continuity-tests.png)  
+
+### Troubleshooting  
+
+If closing a switch doesn’t produce the expected result, it’s time for some debugging.  
+
+- First, verify that the hardware is behaving as expected. A multimeter in continuity mode will be your best friend here.  
+- You can also use DC voltage mode to check the electrical potential at each pin and observe how the voltage changes when a switch is closed.  
+- Reference the KiCAD files or the screenshot below to help with troubleshooting:  
+
+![alt text](images/kicad.png)  
+
+If everything checks out, congratulations! Your board is properly set up. Now, it's finally time to install the key switches.  
 
 ## Solder in the Key Switches
 
-![alt text](images/first-look-with-keys.png)
+Now it's finally time to make this keyboard *feel* like a keyboard.  
 
+The Choc key switches should snap into place when inserted into the PCB. Install them on the side *opposite* the surface-mount components, ensuring the pins protrude cleanly through the board.  
 
-## Trim the Protruding Pins that will be Behind the Battery
+Once all the switches are in place, double-check that each one is sitting flush against the PCB. Any gaps could cause soldering or alignment issues later.  
 
-![alt text](images/pins-pre-trim.png)
-![alt text](images/pins-post-trim.png)
+Next, flip the board over and begin soldering the pins on the backside. Apply enough solder to fully join each pin to the pad, ensuring a strong electrical and mechanical connection.  
 
+![alt text](images/first-look-with-keys.png)  
 
-## Flash the Firmware
+This step should really bring the keyboard to life—especially once the keycaps are installed.  
 
-![alt text](images/ready-for-case-back.png)
+## Trim the Protruding Pins Behind the Battery  
 
+This step is a precautionary measure. The key switch pins sticking through the PCB can be sharp, and since the battery will sit directly beneath them, we want to eliminate any risk of puncture.  
 
-## Insert the Magnets and Install the Case Backs
+Using flush cutters, carefully trim the highlighted pins shown in the image below—only the ones located under the battery.  
 
-![alt text](images/case-print-post-desupporting.png)
-![alt text](images/dyad-bottom.png)
+![alt text](images/pins-pre-trim.png)  
+![alt text](images/pins-post-trim.png)  
 
+Be sure not to cut the pins all the way down to the PCB. We still need enough solder remaining to maintain a strong mechanical connection between the switch and the board. The goal is simply to blunt the pins and reduce their height to be lower than the diodes on the PCB.  
+
+## Insert the Magnets and Install the Case Backs  
+
+The final step is installing the magnets into the 3D printed case halves and completing the final assembly.  
+
+### Preparing the Case  
+
+If you printed the case yourself, you may need to remove supports from the bottom. The grippy foot recesses and the central storage tray are offset from the bottom plane, so supports are necessary during printing. I designed my supports to be easily removable, leaving the intended geometry intact. If you're unsure about your settings, I’ll be linking a test print file so you can verify before committing to a full case.  
+
+![alt text](images/case-print-post-desupporting.png)  
+
+### Installing the Magnets  
+
+To ensure proper alignment, keep the magnets stacked in a line and insert them one at a time, scraping off the last magnet into each recess after pressing the whole stack in. This guarantees all magnets are oriented consistently, which is crucial for the cases to snap together correctly.  
+
+Make sure the magnets are positioned to attract the magnets on the opposite case when placed bottom-to-bottom.  
+
+The center magnets for the reed switches require extra attention. After inserting them, hold each over the reed switch of the opposite board half to confirm the power cuts out. The easiest way to test this is by plugging the board into power—if the magnet is correctly placed, the charging indicator light should turn off when the reed switch activates. If the light stays on even when the magnet is directly over the reed switch, flip the magnet and retest. Repeat this for both halves of the case.  
+
+If the magnets feel loose, use a small amount of glue to secure them.  
+
+### Attaching the Grippy Feet  
+
+Before final assembly, install the grippy feet. There are five locations per case half—one at each of the four outer corners and one beneath the top middle finger button.  
+
+![alt text](images/dyad-bottom.png)  
+
+### Positioning the Battery and Closing the Case  
+
+Ensure the batteries are securely connected before positioning them inside the case. Take extra care to orient the battery wire properly. The best method is to route the wire along the length of the battery, creating a sharp turn near the connector. Lightly bending the wire beforehand can help it rest beneath the battery without pinching between the case and any components. Avoid pinching or puncturing the insulation, as this could cause a short.  
+
+### Final Assembly  
+
+Align all four spring pins with their corresponding contacts in the case. Press the case halves onto the PCB and secure them using the two screws per half. These screws are tiny and can easily be over-tightened, risking damage to the case or snapping the screw. Only apply pressure to the short side of the hex key and tighten just until snug.  
+
+With that, your keyboard is fully assembled and functional!  
+
+The center storage tray is a great place to store the dongle and USB adapter while traveling. I’m considering adding tiny magnets inside the tray and on the dongle to allow it to snap into place automatically. If this works well, I’ll update this section with the details.  
 
 ## Enjoy your Keyboard!
+
+Please feel free to reach out to me. I would love to see your completed work!
 
 ![alt text](images/dyad-overview.png)
 ![alt text](images/dyad-back.png)
 ![alt text](images/dyad-stowed.png)
-
 
 ---
 
