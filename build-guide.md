@@ -1,6 +1,6 @@
 # Dyad Keyboard - Build Guide
 
-Welcome to the build guide for your Dyad keyboard! This guide will take you through every step, from preparing the PCB to final assembly. 
+Welcome to the build guide for your Dyad keyboard! This guide will take you through every step, from preparing the PCB to final assembly.
 
 You'll be soldering surface-mounted components, installing key switches, flashing firmware, testing connections, and assembling the case. By the end of this guide, you'll have a fully functional, compact, and travel-friendly keyboard designed for comfort and efficiency.  
 
@@ -35,11 +35,11 @@ Take your time, double-check each step, and enjoy the process. Let’s get start
 
 ## Install the Press-fit Nuts
 
-I designed Dyad to use press-fit nuts and spring pins so we can attach directly to the back of the PCB without any exposed mounting hardware (the holes in the PCB are covered by the key switches on the other side) or having to wrap around the edges. The press-fit nuts are low-profile, easy to install, and rock solid. The spring pins provide tight, precise alignment with high shear strength, allowing us to use fewer and smaller screws while still keeping everything secure.  
+I designed Dyad to use [press-fit](https://www.mcmaster.com/94648A310/) nuts and [spring pins](https://www.mcmaster.com/98296A015/) so we can attach directly to the back of the PCB without any exposed mounting hardware (the holes in the PCB are covered by the key switches on the other side) or having to wrap around the edges. The press-fit nuts are low-profile, easy to install, and rock solid. The spring pins provide tight, precise alignment with high shear strength, allowing us to use fewer and smaller screws while still keeping everything secure.  
 
 It's best to start the build with the press-fit nuts since they require some force to install, and you don’t want to risk slipping and damaging other components. The nuts I’ve linked in the parts list actually cut into the PCB material as they’re inserted, creating enough friction to stay put permanently. Once they’re in, they’re *in*. The key is to go slow and prevent the PCB from flexing too much during installation.  
 
-I found that parallel jaw pliers work great for pressing the nuts into place. Since I was worried about putting too much stress on the PCB, I used a small aluminum plate as a backing to distribute the force evenly. In some cases, I had to work one side of the nut down first and then the other. The goal is to get them perfectly flush with the PCB surface with no gaps.  
+I found that small parallel jaw pliers work great for pressing the nuts into place. Since I was worried about putting too much stress on the PCB, I used a small aluminum plate as a backing to distribute the force evenly. In some cases, I had to work one side of the nut down first and then the other. The goal is to get them perfectly flush with the PCB surface with no gaps.  
 
 ![Press-fit nuts installed](images/press-nuts.png)  
 
@@ -63,7 +63,7 @@ Once the spring pins are in, we’re ready to start soldering electrical compone
 
 ## Solder Diodes, Power and Reset Switch, and Battery Connector
 
-Now we're going to solder everything *except* the microcontroller and key switches. Since all of these components are surface-mount, a precision tip for your soldering iron will be extremely helpful. 
+Now we're going to solder everything *except* the microcontroller and key switches. Since all of these components are surface-mount, a precision tip for your soldering iron will be extremely helpful.
 
 If you're already familiar with using solder paste and hot plates, then you probably don't need to read the next couple sections. You can still read on to get a good laugh out of the scrappy way I got it done with what was on hand.
 
@@ -201,11 +201,11 @@ Be sure not to cut the pins all the way down to the PCB. We still need enough so
 
 ## Insert the Magnets and Install the Case Backs  
 
-The final step is installing the magnets into the 3D printed case halves and completing the final assembly.  
+The final step is installing the [magnets](https://www.amazon.com/dp/B0B6VKY7Y2?ref_=ppx_hzsearch_conn_dt_b_fed_asin_title_4) into the 3D printed case halves and completing the final assembly. The case back STL files can be found [here](https://github.com/dyad-keeb/zmk-config-dyad/tree/main/case), along with the files for a magnetic travel case.
 
 ### Preparing the Case  
 
-If you printed the case yourself, you may need to remove supports from the bottom. The grippy foot recesses and the central storage tray are offset from the bottom plane, so supports are necessary during printing. I designed my supports to be easily removable, leaving the intended geometry intact. If you're unsure about your settings, I’ll be linking a test print file so you can verify before committing to a full case.  
+If you printed the case yourself, you may need to remove supports from the bottom. The grippy foot recesses and the central storage tray are offset from the bottom plane, so supports are necessary during printing. I designed my supports to be easily removable, leaving the intended geometry intact. If you're unsure about your settings, I've [uploaded a small model with representative overhangs](https://github.com/dyad-keeb/zmk-config-dyad/tree/main/case) so you can verify your support settings before committing to a full case.  
 
 ![alt text](images/case-print-post-desupporting.png)  
 
@@ -236,6 +236,20 @@ Align all four spring pins with their corresponding contacts in the case. Press 
 With that, your keyboard is fully assembled and functional!  
 
 The center storage tray is a great place to store the dongle and USB adapter while traveling. I’m considering adding tiny magnets inside the tray and on the dongle to allow it to snap into place automatically. If this works well, I’ll update this section with the details.  
+
+### Optional Travel Case
+
+I've noticed that the bottom corners of the keycaps will occasionally snag on things when I put this keyboard in my backpack or in a large coat pocket. This is manageable for short trips, like moving around the office, or from building to building. It's still a little unpleasant on longer trips, such as air travel, when my bag might be rummaged through by TSA and thrown around. In response to this, I designed a small and simple travel case to accompany the Dyad.
+
+![alt text](images/travel-case-1.png)  
+
+The travel case files are [uploaded alongside the other case files](https://github.com/dyad-keeb/zmk-config-dyad/tree/main/case). I wanted the case to be small, like the rest of the keyboard, and nicely rounded to minimize its profile when in a bag or a big pocket. The case hugs the keyboard tightly, and is about the size of a sandwich box, but still has a couple tiny storage pockets in the negative space for things like alternative USB adapters. The height is also set such that the key switches are slightly depressed when the travel case is closed; this utilizes they switches themselves to provide a damping cushion to protect the keyboard from jostling without the use of foam or fabrics.
+
+![alt text](images/travel-case-2.png)  
+
+The travel case has a small shear lip to keep the halves aligned without putting load on the keyboard inside. The same magnets that are used to stow the keyboard halves together are used to retain the travel case halves together.  
+
+I think the travel case looks pretty good when printed in clear PETG, since it shows off what's inside :)
 
 ## Enjoy your Keyboard!
 
