@@ -3,9 +3,7 @@ include:
 
   - board: seeeduino_xiao_ble
     shield: dyad_central_left
-    artifact-name: dyad_central_left
   - board: seeeduino_xiao_ble
     shield: dyad_peripheral_right
-    artifact-name: dyad_peripheral_right
   - board: seeeduino_xiao_ble
     shield: settings_reset
