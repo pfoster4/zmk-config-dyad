@@ -1,11 +1,9 @@
 include:
   # dyad
+
   - board: seeeduino_xiao_ble
-    shield: dyad_central_dongle
-    artifact-name: dyad_central_dongle
-  - board: seeeduino_xiao_ble
-    shield: dyad_peripheral_left
-    artifact-name: dyad_peripheral_left
+    shield: dyad_central_left
+    artifact-name: dyad_central_left
   - board: seeeduino_xiao_ble
     shield: dyad_peripheral_right
     artifact-name: dyad_peripheral_right
