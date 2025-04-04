@@ -2,7 +2,7 @@ file_format: "1"
 id: dyad
 name: Dyad
 type: shield
-url:
+url: https://github.com/dyad-keeb/zmk-config-dyad
 requires: [seeeduino_xiao_ble]
 features:
   - keys
