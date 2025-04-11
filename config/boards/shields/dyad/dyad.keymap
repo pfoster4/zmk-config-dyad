@@ -102,11 +102,17 @@
         Paint {
             bindings = <&paint_macro>;
             key-positions = <4 3>;
+            layers = <0>;
         };
 
         tabs {
             bindings = <&Switch_macro>;
             key-positions = <13 14>;
+        };
+
+        Paint2 {
+            bindings = <&Paint2_macro>;
+            key-positions = <6 5>;
         };
     };
 
@@ -114,7 +120,7 @@
         pin_macro: pin_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp N5 &kp NUMBER_6 &kp N7 &kp N8 &kp N9 &kp N0 &kp ENTER>;
+            bindings = <&kp LS(M) &kp I &kp S &kp S &kp LS(D) &kp A &kp I &kp S &kp Y &kp MINUS &kp N1 &kp N2 &kp N3>;
             label = "PIN_MACRO";
             wait-ms = <25>;
             tap-ms = <25>;
@@ -162,7 +168,7 @@
                 <&kp R>,
                 <&macro_release>,
                 <&kp LEFT_WIN>,
-                <&macro_wait_time 100>,
+                <&macro_wait_time 250>,
                 <&kp M &kp S &kp P &kp A &kp I &kp N &kp T &kp DOT &kp E &kp X &kp E>,
                 <&macro_wait_time 100>,
                 <&kp ENTER>;
@@ -250,6 +256,22 @@
             label = "TEXTEXTRACTOR_MACRO";
             wait-ms = <1>;
             tap-ms = <1>;
+        };
+
+        Paint2_macro: Paint2_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_tap>,
+                <&kp LEFT_WIN>,
+                <&macro_wait_time 250>,
+                <&kp M &kp S &kp P &kp A &kp I &kp N &kp T &kp DOT &kp E &kp X &kp E>,
+                <&macro_wait_time 100>,
+                <&kp ENTER>;
+
+            label = "PAINT2_MACRO";
+            wait-ms = <50>;
+            tap-ms = <50>;
         };
     };
 
