@@ -8,7 +8,6 @@
 #include <dt-bindings/zmk/mouse.h>
 #include <dt-bindings/zmk/outputs.h>
 
-
 &mt {
     tapping-term-ms = <300>;
     flavor = "tap-preferred";
@@ -115,16 +114,23 @@
         pin_macro: pin_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp N5 &kp NUMBER_6 &kp N7 &kp N8 &kp N9 &kp N0 &kp ENTER>;
+            bindings = <&kp LS(M) &kp I &kp S &kp S &kp LS(D) &kp A &kp I &kp S &kp Y &kp MINUS &kp N1 &kp N2 &kp N3>;
             label = "PIN_MACRO";
-            wait-ms = <50>;
-            tap-ms = <50>;
+            wait-ms = <25>;
+            tap-ms = <25>;
         };
 
         NewWindow_macro: NewWindow_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LEFT_WIN &kp E>;
+            bindings =
+                <&macro_press>,
+                <&kp LEFT_WIN>,
+                <&macro_tap>,
+                <&kp E>,
+                <&macro_release>,
+                <&kp LEFT_WIN>;
+
             label = "NEWWINDOW_MACRO";
             wait-ms = <50>;
             tap-ms = <50>;
@@ -133,7 +139,14 @@
         Switch_macro: Switch_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kt LEFT_WIN &kp TAB>;
+            bindings =
+                <&macro_press>,
+                <&kt LEFT_WIN>,
+                <&macro_tap>,
+                <&kp TAB>,
+                <&macro_release>,
+                <&kp LEFT_WIN>;
+
             label = "SWITCH_MACRO";
             wait-ms = <25>;
             tap-ms = <25>;
@@ -142,7 +155,18 @@
         paint_macro: paint_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LEFT_WIN &kp P &kp A &kp I &kp N &kp T &kp ENTER>;
+            bindings =
+                <&macro_press>,
+                <&kp LEFT_WIN>,
+                <&macro_tap>,
+                <&kp R>,
+                <&macro_release>,
+                <&kp LEFT_WIN>,
+                <&macro_wait_time 100>,
+                <&kp M &kp S &kp P &kp A &kp I &kp N &kp T &kp DOT &kp E &kp X &kp E>,
+                <&macro_wait_time 100>,
+                <&kp ENTER>;
+
             label = "PAINT_MACRO";
             wait-ms = <50>;
             tap-ms = <50>;
@@ -160,7 +184,14 @@
         CB_History_macro: CB_History_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LEFT_WIN &kp V>;
+            bindings =
+                <&macro_press>,
+                <&kp LEFT_WIN>,
+                <&macro_tap>,
+                <&kp V>,
+                <&macro_release>,
+                <&kp LEFT_WIN>;
+
             label = "CB_History_macro";
             wait-ms = <1>;
             tap-ms = <1>;
@@ -169,17 +200,15 @@
         MoveRight_macro: MoveRight_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LEFT_WIN &kp LEFT_SHIFT &kp RIGHT>;
-            label = "MOVERIGHT_MACRO";
-            wait-ms = <1>;
-            tap-ms = <1>;
-        };
+            bindings =
+                <&macro_press>,
+                <&kp LEFT_WIN &kp LEFT_SHIFT>,
+                <&macro_tap>,
+                <&kp RIGHT>,
+                <&macro_release>,
+                <&kp LEFT_WIN &kp LEFT_SHIFT>;
 
-        MoveLeft_macro: MoveLeft_macro {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LEFT_WIN &kp LEFT_SHIFT &kp LEFT>;
-            label = "MOVELEFT_MACRO";
+            label = "MOVERIGHT_MACRO";
             wait-ms = <1>;
             tap-ms = <1>;
         };
@@ -191,10 +220,33 @@
             label = "SELECTLINE_MACRO";
         };
 
+        MoveLeft_macro: MoveLeft_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LEFT_WIN &kp LEFT_SHIFT>,
+                <&macro_tap>,
+                <&kp LEFT>,
+                <&macro_release>,
+                <&kp LEFT_WIN &kp LEFT_SHIFT>;
+
+            label = "MOVELEFT_MACRO";
+            wait-ms = <1>;
+            tap-ms = <1>;
+        };
+
         TextExtractor_macro: TextExtractor_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LEFT_WIN &kp LEFT_SHIFT &kp T>;
+            bindings =
+                <&macro_press>,
+                <&kp LEFT_WIN &kp LEFT_SHIFT>,
+                <&macro_tap>,
+                <&kp T>,
+                <&macro_release>,
+                <&kp LEFT_WIN &kp LEFT_SHIFT>;
+
             label = "TEXTEXTRACTOR_MACRO";
             wait-ms = <1>;
             tap-ms = <1>;
