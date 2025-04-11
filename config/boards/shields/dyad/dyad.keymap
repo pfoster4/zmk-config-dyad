@@ -115,7 +115,7 @@
         pin_macro: pin_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LS(M) &kp I &kp S &kp S &kp LS(D) &kp A &kp I &kp S &kp Y &kp MINUS &kp N1 &kp N2 &kp N3>;
+            bindings = <&kp N5 &kp NUMBER_6 &kp N7 &kp N8 &kp N9 &kp N0 &kp ENTER>;
             label = "PIN_MACRO";
             wait-ms = <50>;
             tap-ms = <50>;
