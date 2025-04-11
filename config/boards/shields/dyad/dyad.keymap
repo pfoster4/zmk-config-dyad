@@ -8,8 +8,9 @@
 #include <dt-bindings/zmk/mouse.h>
 #include <dt-bindings/zmk/outputs.h>
 
+
 &mt {
-    tapping-term-ms = <500>;
+    tapping-term-ms = <300>;
     flavor = "tap-preferred";
 };
 
@@ -32,18 +33,12 @@
         undo_combo {
             bindings = <&kp LC(Z)>;
             key-positions = <20 21>;
-            layers = <1>;
+            layers = <0 1>;
         };
 
-        tab_combo {
-            bindings = <&lt 3 TAB>;
+        BackspaceWord_combo {
+            bindings = <&lt 3 LC(BACKSPACE)>;
             key-positions = <30 31>;
-            layers = <0>;
-        };
-
-        escape_combo {
-            bindings = <&kp ESC>;
-            key-positions = <0 10>;
             layers = <0>;
         };
 
@@ -51,26 +46,6 @@
             bindings = <&lt 6 DELETE>;
             key-positions = <33 32>;
             layers = <0>;
-        };
-
-        tab2_combo {
-            bindings = <&kp TAB>;
-            key-positions = <10 11>;
-        };
-
-        copy_combo {
-            bindings = <&kp LC(C)>;
-            key-positions = <22 23>;
-        };
-
-        paste_combo {
-            bindings = <&kp LC(V)>;
-            key-positions = <23 24>;
-        };
-
-        cut_combo {
-            bindings = <&kp LC(X)>;
-            key-positions = <21 22>;
         };
 
         F5_combo {
@@ -99,14 +74,130 @@
             bindings = <&pin_macro>;
             key-positions = <30 33 31 32>;
         };
+
+        Caps {
+            bindings = <&kp CAPS>;
+            key-positions = <1 2>;
+        };
+
+        Delete {
+            bindings = <&kp DELETE>;
+            key-positions = <4 3>;
+        };
+
+        NewWindow_macro {
+            bindings = <&NewWindow_macro>;
+            key-positions = <14 2>;
+        };
+
+        Search {
+            bindings = <&kp LC(E)>;
+            key-positions = <3 2>;
+        };
+
+        SwitchTabs {
+            bindings = <&kp LA(TAB)>;
+            key-positions = <24 23>;
+        };
+
+        Paint {
+            bindings = <&paint_macro>;
+            key-positions = <4 3>;
+        };
+
+        tabs {
+            bindings = <&Switch_macro>;
+            key-positions = <13 14>;
+        };
     };
 
     macros {
         pin_macro: pin_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp N5 &kp NUMBER_6 &kp N7 &kp N8 &kp N9 &kp N0 &kp ENTER>;
+            bindings = <&kp LS(M) &kp I &kp S &kp S &kp LS(D) &kp A &kp I &kp S &kp Y &kp MINUS &kp N1 &kp N2 &kp N3>;
             label = "PIN_MACRO";
+            wait-ms = <50>;
+            tap-ms = <50>;
+        };
+
+        NewWindow_macro: NewWindow_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_WIN &kp E>;
+            label = "NEWWINDOW_MACRO";
+            wait-ms = <50>;
+            tap-ms = <50>;
+        };
+
+        Switch_macro: Switch_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kt LEFT_WIN &kp TAB>;
+            label = "SWITCH_MACRO";
+            wait-ms = <25>;
+            tap-ms = <25>;
+        };
+
+        paint_macro: paint_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_WIN &kp P &kp A &kp I &kp N &kp T &kp ENTER>;
+            label = "PAINT_MACRO";
+            wait-ms = <50>;
+            tap-ms = <50>;
+        };
+
+        Brackets_macro: Brackets_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_PARENTHESIS &kp RIGHT_PARENTHESIS &kp LEFT>;
+            label = "BRACKETS_MACRO";
+            wait-ms = <50>;
+            tap-ms = <50>;
+        };
+
+        CB_History_macro: CB_History_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_WIN &kp V>;
+            label = "CB_History_macro";
+            wait-ms = <1>;
+            tap-ms = <1>;
+        };
+
+        MoveRight_macro: MoveRight_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_WIN &kp LEFT_SHIFT &kp RIGHT>;
+            label = "MOVERIGHT_MACRO";
+            wait-ms = <1>;
+            tap-ms = <1>;
+        };
+
+        MoveLeft_macro: MoveLeft_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_WIN &kp LEFT_SHIFT &kp LEFT>;
+            label = "MOVELEFT_MACRO";
+            wait-ms = <1>;
+            tap-ms = <1>;
+        };
+
+        SelectLine_macro: SelectLine_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp HOME &kp LS(END)>;
+            label = "SELECTLINE_MACRO";
+        };
+
+        TextExtractor_macro: TextExtractor_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_WIN &kp LEFT_SHIFT &kp T>;
+            label = "TEXTEXTRACTOR_MACRO";
+            wait-ms = <1>;
+            tap-ms = <1>;
         };
     };
 
@@ -136,19 +227,19 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp PAGE_UP    &kp HOME        &kp UP_ARROW    &kp END          &trans            &kp LEFT_BRACKET  &kp N7        &kp N8        &kp N9        &kp RIGHT_BRACKET
-&kp PAGE_DOWN  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &mmv MOVE_UP      &kp EQUAL         &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp SEMICOLON
-&trans         &trans          &trans          &trans           &mmv MOVE_DOWN    &kp BACKSLASH     &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp GRAVE
-                                               &trans           &trans            &kp N0            &kp PERIOD
+&kp PAGE_UP    &kp HOME        &kp UP_ARROW    &kp END            &Brackets_macro    &kp LEFT_BRACKET  &kp N7        &kp N8        &kp N9        &kp RIGHT_BRACKET
+&kp PAGE_DOWN  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW    &mt LC(V) LC(X)    &kp EQUAL         &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp SEMICOLON
+&caps_word     &trans          &trans          &CB_History_macro  &mt LC(V) LC(C)    &kp BACKSLASH     &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp GRAVE
+                                               &trans             &trans             &kp N0            &kp PERIOD
             >;
         };
 
         symbol_layer {
             bindings = <
-&trans  &trans  &trans  &trans  &trans    &kp LEFT_BRACE        &kp AMPERSAND          &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_BRACE
-&trans  &trans  &trans  &trans  &trans    &kp PLUS              &kp DOLLAR             &kp PERCENT   &kp CARET             &kp COLON
-&trans  &trans  &trans  &trans  &trans    &kp PIPE              &kp EXCLAMATION        &kp AT_SIGN   &kp HASH              &kp TILDE
-                        &trans  &trans    &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
+&trans                &trans        &trans             &trans            &trans    &kp LEFT_BRACE        &kp AMPERSAND          &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_BRACE
+&TextExtractor_macro  &trans        &MoveLeft_macro    &MoveRight_macro  &trans    &kp PLUS              &kp DOLLAR             &kp PERCENT   &kp CARET             &kp COLON
+&trans                &kp LS(HOME)  &SelectLine_macro  &kp LS(END)       &trans    &kp PIPE              &kp EXCLAMATION        &kp AT_SIGN   &kp HASH              &kp TILDE
+                                                       &trans            &trans    &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
             >;
         };
 
