@@ -9,7 +9,7 @@
 #include <dt-bindings/zmk/outputs.h>
 
 &mt {
-    tapping-term-ms = <300>;
+    tapping-term-ms = <250>;
     flavor = "tap-preferred";
 };
 
@@ -36,13 +36,13 @@
         };
 
         BackspaceWord_combo {
-            bindings = <&lt 3 LC(BACKSPACE)>;
+            bindings = <&lt 7 LC(BACKSPACE)>;
             key-positions = <30 31>;
             layers = <0>;
         };
 
         delete_comb {
-            bindings = <&lt 6 DELETE>;
+            bindings = <&lt 4 DELETE>;
             key-positions = <33 32>;
             layers = <0>;
         };
@@ -50,11 +50,13 @@
         F5_combo {
             bindings = <&kp F5>;
             key-positions = <17 7>;
+            layers = <0>;
         };
 
         prtscn_combo {
             bindings = <&kp PRINTSCREEN>;
             key-positions = <15 5>;
+            layers = <0>;
         };
 
         underscore_combo {
@@ -77,42 +79,55 @@
         Caps {
             bindings = <&kp CAPS>;
             key-positions = <1 2>;
+            layers = <0>;
         };
 
         Delete {
             bindings = <&kp DELETE>;
             key-positions = <4 3>;
+            layers = <0>;
         };
 
         NewWindow_macro {
             bindings = <&NewWindow_macro>;
             key-positions = <14 2>;
+            layers = <0>;
         };
 
         Search {
             bindings = <&kp LC(E)>;
             key-positions = <3 2>;
+            layers = <0>;
         };
 
         SwitchTabs {
             bindings = <&kp LA(TAB)>;
             key-positions = <24 23>;
+            layers = <0>;
         };
 
         Paint {
             bindings = <&paint_macro>;
-            key-positions = <4 3>;
+            key-positions = <5 6>;
             layers = <0>;
         };
 
-        tabs {
-            bindings = <&Switch_macro>;
-            key-positions = <13 14>;
+        InternalTabs {
+            bindings = <&kp LC(TAB)>;
+            key-positions = <24 22>;
+            layers = <0>;
         };
 
-        Paint2 {
-            bindings = <&Paint2_macro>;
-            key-positions = <6 5>;
+        CTRL_S {
+            bindings = <&kp LC(S)>;
+            key-positions = <0 1>;
+            layers = <0>;
+        };
+
+        REDO {
+            bindings = <&kp LC(Y)>;
+            key-positions = <10 11>;
+            layers = <0 1>;
         };
     };
 
@@ -120,7 +135,7 @@
         pin_macro: pin_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp N1 &kp N2 &kp N3>;
+            bindings = <&kp LS(M) &kp I &kp S &kp S &kp LS(D) &kp A &kp I &kp S &kp Y &kp MINUS &kp N1 &kp N2 &kp N3>;
             label = "PIN_MACRO";
             wait-ms = <25>;
             tap-ms = <25>;
@@ -165,13 +180,8 @@
                 <&macro_press>,
                 <&kp LEFT_WIN>,
                 <&macro_tap>,
-                <&kp R>,
-                <&macro_release>,
-                <&kp LEFT_WIN>,
-                <&macro_wait_time 250>,
-                <&kp M &kp S &kp P &kp A &kp I &kp N &kp T &kp DOT &kp E &kp X &kp E>,
-                <&macro_wait_time 100>,
-                <&kp ENTER>;
+                <&kp NUMBER_1>,
+                <&macro_release>;
 
             label = "PAINT_MACRO";
             wait-ms = <50>;
@@ -258,20 +268,74 @@
             tap-ms = <1>;
         };
 
-        Paint2_macro: Paint2_macro {
+        ACADE_SaveZoomClose: SaveZoomClose {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings =
-                <&macro_tap>,
-                <&kp LEFT_WIN>,
-                <&macro_wait_time 250>,
-                <&kp M &kp S &kp P &kp A &kp I &kp N &kp T &kp DOT &kp E &kp X &kp E>,
-                <&macro_wait_time 100>,
-                <&kp ENTER>;
+            bindings = <&kp S &kp V &kp RET>;
+            label = "SAVEZOOMCLOSE";
+        };
 
-            label = "PAINT2_MACRO";
-            wait-ms = <50>;
-            tap-ms = <50>;
+        ACADE_CloseNoSave: ACADE_close {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp C &kp C &kp RET>;
+            label = "ACADE_CLOSE";
+        };
+
+        ACADE_edit: ACADE_edit {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp E &kp D &kp I &kp T &kp RET>;
+            label = "ACADE_EDIT";
+        };
+
+        ACADE_Align: ACADE_Align {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp A &kp E &kp A &kp RET>;
+            label = "ACADE_ALIGN";
+        };
+
+        ACADE_SaveNext: ACADE_SaveNext {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp N &kp N &kp RET>;
+            label = "ACADE_SAVENEXT";
+        };
+
+        ACADE_SavePrevious: ACADE_SavePrevious {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp B &kp B &kp RET>;
+            label = "ACADE_SAVEPREVIOUS";
+        };
+
+        ACADE_Wire: ACADE_Wire {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp A &kp E &kp W &kp RET>;
+            label = "ACADE_WIRE";
+        };
+
+        ACADE_FlipWireNo: ACADE_FlipWireNo {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp A &kp E &kp F &kp L &kp W &kp RET>;
+            label = "ACADE_FLIPWIRENO";
+        };
+
+        ACADE_Justify: ACADE_Justify {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp A &kp E &kp J &kp RET>;
+            label = "ACADE_JUSTIFY";
+        };
+
+        ACADE_Surf: ACADE_Surf {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp A &kp E &kp S &kp RET>;
+            label = "ACADE_SURF";
         };
     };
 
@@ -289,7 +353,7 @@
 &mt TAB Q    &kp W  &kp E  &kp R       &kp T             &kp Y            &kp U              &kp I                &kp O            &kp P
 &mt LSHFT A  &kp S  &kp D  &mt LALT F  &mt LEFT_WIN G    &mt RIGHT_WIN H  &mt RIGHT_SHIFT J  &mt RIGHT_CONTROL K  &mt RIGHT_ALT L  &kp APOS
 &mt LCTRL Z  &kp X  &kp C  &kp V       &kp B             &kp N            &kp M              &kp COMMA            &kp PERIOD       &kp SLASH
-                           &lt 2 ESC   &lt 1 ENTER       &lt 4 SPACE      &lt 5 BACKSPACE
+                           &lt 2 ESC   &lt 1 ENTER       &kp SPACE        &lt 3 BACKSPACE
             >;
         };
 
@@ -301,10 +365,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp PAGE_UP    &kp HOME        &kp UP_ARROW    &kp END            &Brackets_macro    &kp LEFT_BRACKET  &kp N7        &kp N8        &kp N9        &kp RIGHT_BRACKET
-&kp PAGE_DOWN  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW    &mt LC(V) LC(X)    &kp EQUAL         &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp SEMICOLON
-&caps_word     &trans          &trans          &CB_History_macro  &mt LC(V) LC(C)    &kp BACKSLASH     &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp GRAVE
-                                               &trans             &trans             &kp N0            &kp PERIOD
+&kp PAGE_UP    &kp HOME        &kp UP_ARROW     &kp END            &kp TAB            &kp LEFT_BRACKET  &kp N7        &kp N8        &kp N9        &kp RIGHT_BRACKET
+&kp PAGE_DOWN  &kp LEFT_ARROW  &kp DOWN_ARROW   &kp RIGHT_ARROW    &mt LC(V) LC(X)    &kp EQUAL         &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp SEMICOLON
+&kp LCTRL      &caps_word      &Brackets_macro  &CB_History_macro  &mt LC(V) LC(C)    &kp BACKSLASH     &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp GRAVE
+                                                &trans             &trans             &kp N0            &kp PERIOD
             >;
         };
 
@@ -350,6 +414,15 @@
 &trans  &kp C_REWIND    &kp C_VOLUME_DOWN  &kp C_FAST_FORWARD  &trans              &trans  &trans  &trans  &trans  &trans
 &trans  &trans          &kp K_MUTE         &trans              &trans              &trans  &trans  &trans  &trans  &trans
                                            &kp K_MUTE          &kp K_PLAY_PAUSE    &trans  &trans
+            >;
+        };
+
+        ACADE {
+            bindings = <
+&trans  &trans  &ACADE_Justify     &ACADE_SavePrevious   &ACADE_SaveNext       &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &ACADE_edit        &ACADE_SaveZoomClose  &ACADE_CloseNoSave    &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &ACADE_FlipWireNo  &ACADE_Align          &ACADE_Wire           &trans  &trans  &trans  &trans  &trans
+                                   &trans                &trans                &trans  &trans
             >;
         };
     };
