@@ -42,7 +42,7 @@
         };
 
         delete_comb {
-            bindings = <&lt 4 DELETE>;
+            bindings = <&lt 9 DELETE>;
             key-positions = <33 32>;
             layers = <0>;
         };
@@ -63,12 +63,6 @@
             bindings = <&kp UNDERSCORE>;
             key-positions = <32 33>;
             layers = <2>;
-        };
-
-        middle_click_combo {
-            bindings = <&mkp MCLK>;
-            key-positions = <30 31>;
-            layers = <4>;
         };
 
         pin_combo {
@@ -129,13 +123,38 @@
             key-positions = <10 11>;
             layers = <0 1>;
         };
+
+        CloseInternal {
+            bindings = <&kp LC(F4)>;
+            key-positions = <24 25>;
+        };
+
+        CloseWindow {
+            bindings = <&kp LA(F4)>;
+            key-positions = <14 15>;
+        };
+
+        Windows {
+            bindings = <&kp LEFT_WIN>;
+            key-positions = <29 19>;
+        };
+
+        Alt {
+            bindings = <&kp LEFT_ALT>;
+            key-positions = <20 10>;
+        };
+
+        CtrlAltDel {
+            bindings = <&CtrlAltDel>;
+            key-positions = <0 20 10>;
+        };
     };
 
     macros {
         pin_macro: pin_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp N1 &kp N2 &kp N3>;
+            bindings = <&kp LS(M) &kp I &kp S &kp S &kp LS(D) &kp A &kp I &kp S &kp Y &kp MINUS &kp N1 &kp N2 &kp N3>;
             label = "PIN_MACRO";
             wait-ms = <25>;
             tap-ms = <25>;
@@ -181,7 +200,8 @@
                 <&kp LEFT_WIN>,
                 <&macro_tap>,
                 <&kp NUMBER_1>,
-                <&macro_release>;
+                <&macro_release>,
+                <&kp LEFT_WIN>;
 
             label = "PAINT_MACRO";
             wait-ms = <50>;
@@ -337,6 +357,170 @@
             bindings = <&kp A &kp E &kp S &kp RET>;
             label = "ACADE_SURF";
         };
+
+        Taskbar_2: Taskbar_1 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LEFT_WIN>,
+                <&macro_tap>,
+                <&kp NUMBER_2>,
+                <&macro_release>,
+                <&kp LEFT_WIN>;
+
+            label = "TASKBAR_1";
+            wait-ms = <50>;
+            tap-ms = <50>;
+        };
+
+        Taskbar_3: Taskbar_3 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LEFT_WIN>,
+                <&macro_tap>,
+                <&kp NUMBER_3>,
+                <&macro_release>,
+                <&kp LEFT_WIN>;
+
+            label = "TASKBAR_3";
+            wait-ms = <50>;
+            tap-ms = <50>;
+        };
+
+        Taskbar_4: Taskbar_4 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LEFT_WIN>,
+                <&macro_tap>,
+                <&kp NUMBER_4>,
+                <&macro_release>,
+                <&kp LEFT_WIN>;
+
+            label = "TASKBAR_4";
+            wait-ms = <50>;
+            tap-ms = <50>;
+        };
+
+        Taskbar_5: Taskbar_5 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LEFT_WIN>,
+                <&macro_tap>,
+                <&kp N5>,
+                <&macro_release>,
+                <&kp LEFT_WIN>;
+
+            label = "TASKBAR_5";
+            wait-ms = <50>;
+            tap-ms = <50>;
+        };
+
+        CtrlAltDel: CtrlAltDel {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LEFT_CONTROL>,
+                <&macro_press>,
+                <&kp LEFT_ALT>,
+                <&macro_press>,
+                <&kp DELETE>,
+                <&macro_release>,
+                <&kp LEFT_CONTROL>,
+                <&macro_release>,
+                <&kp LEFT_ALT>,
+                <&macro_release>,
+                <&kp DELETE>;
+
+            label = "CTRLALTDEL";
+        };
+
+        Taskbar_6: Taskbar_6 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LEFT_WIN>,
+                <&macro_tap>,
+                <&kp NUMBER_6>,
+                <&macro_release>,
+                <&kp LEFT_WIN>;
+
+            label = "TASKBAR_6";
+            wait-ms = <50>;
+            tap-ms = <50>;
+        };
+
+        Taskbar_7: Taskbar_7 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LEFT_WIN>,
+                <&macro_tap>,
+                <&kp N7>,
+                <&macro_release>,
+                <&kp LEFT_WIN>;
+
+            label = "TASKBAR_7";
+            wait-ms = <50>;
+            tap-ms = <50>;
+        };
+
+        Taskbar_8: Taskbar_8 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LEFT_WIN>,
+                <&macro_tap>,
+                <&kp N8>,
+                <&macro_release>,
+                <&kp LEFT_WIN>;
+
+            label = "TASKBAR_8";
+            wait-ms = <50>;
+            tap-ms = <50>;
+        };
+
+        Taskbar_9: Taskbar_9 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LEFT_WIN>,
+                <&macro_tap>,
+                <&kp NUMBER_9>,
+                <&macro_release>,
+                <&kp LEFT_WIN>;
+
+            label = "TASKBAR_9";
+            wait-ms = <50>;
+            tap-ms = <50>;
+        };
+
+        Taskbar_10: Taskbar_10 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LEFT_WIN>,
+                <&macro_tap>,
+                <&kp NUMBER_0>,
+                <&macro_release>,
+                <&kp LEFT_WIN>;
+
+            label = "TASKBAR_10";
+            wait-ms = <50>;
+            tap-ms = <50>;
+        };
     };
 
     keymap {
@@ -350,10 +534,10 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&mt TAB Q    &kp W  &kp E  &kp R       &kp T             &kp Y            &kp U              &kp I                &kp O            &kp P
-&mt LSHFT A  &kp S  &kp D  &mt LALT F  &mt LEFT_WIN G    &mt RIGHT_WIN H  &mt RIGHT_SHIFT J  &mt RIGHT_CONTROL K  &mt RIGHT_ALT L  &kp APOS
-&mt LCTRL Z  &kp X  &kp C  &kp V       &kp B             &kp N            &kp M              &kp COMMA            &kp PERIOD       &kp SLASH
-                           &lt 2 ESC   &lt 1 ENTER       &kp SPACE        &lt 3 BACKSPACE
+&mt TAB Q    &kp W  &kp E  &kp R      &kp T          &kp Y      &kp U              &kp I                &kp O            &kp P
+&mt LSHFT A  &kp S  &kp D  &kp F      &kp G          &kp H      &mt RIGHT_SHIFT J  &mt RIGHT_CONTROL K  &mt RIGHT_ALT L  &kp APOS
+&mt LCTRL Z  &kp X  &kp C  &kp V      &lt 8 B        &kp N      &kp M              &kp COMMA            &kp PERIOD       &kp SLASH
+                           &lt 2 ESC  &lt 1 ENTER    &kp SPACE  &lt 3 BACKSPACE
             >;
         };
 
@@ -367,17 +551,17 @@
             bindings = <
 &kp PAGE_UP    &kp HOME        &kp UP_ARROW     &kp END            &kp TAB            &kp LEFT_BRACKET  &kp N7        &kp N8        &kp N9        &kp RIGHT_BRACKET
 &kp PAGE_DOWN  &kp LEFT_ARROW  &kp DOWN_ARROW   &kp RIGHT_ARROW    &mt LC(V) LC(X)    &kp EQUAL         &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp SEMICOLON
-&kp LCTRL      &caps_word      &Brackets_macro  &CB_History_macro  &mt LC(V) LC(C)    &kp BACKSLASH     &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp GRAVE
+&kp LEFT_ALT   &caps_word      &Brackets_macro  &CB_History_macro  &mt LC(V) LC(C)    &kp BACKSLASH     &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp GRAVE
                                                 &trans             &trans             &kp N0            &kp PERIOD
             >;
         };
 
         symbol_layer {
             bindings = <
-&trans                &trans        &trans             &trans            &trans    &kp LEFT_BRACE        &kp AMPERSAND          &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_BRACE
-&TextExtractor_macro  &trans        &MoveLeft_macro    &MoveRight_macro  &trans    &kp PLUS              &kp DOLLAR             &kp PERCENT   &kp CARET             &kp COLON
-&trans                &kp LS(HOME)  &SelectLine_macro  &kp LS(END)       &trans    &kp PIPE              &kp EXCLAMATION        &kp AT_SIGN   &kp HASH              &kp TILDE
-                                                       &trans            &trans    &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
+&trans                &trans        &kp LC(W)          &kp LC(E)         &kp LC(F4)    &kp LEFT_BRACE        &kp AMPERSAND          &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_BRACE
+&TextExtractor_macro  &trans        &MoveLeft_macro    &MoveRight_macro  &trans        &kp PLUS              &kp DOLLAR             &kp PERCENT   &kp CARET             &kp COLON
+&trans                &kp LS(HOME)  &SelectLine_macro  &kp LS(END)       &trans        &kp PIPE              &kp EXCLAMATION        &kp AT_SIGN   &kp HASH              &kp TILDE
+                                                       &trans            &trans        &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
             >;
         };
 
@@ -419,10 +603,28 @@
 
         ACADE {
             bindings = <
-&trans  &trans  &ACADE_Justify     &ACADE_SavePrevious   &ACADE_SaveNext       &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &ACADE_edit        &ACADE_SaveZoomClose  &ACADE_CloseNoSave    &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &ACADE_FlipWireNo  &ACADE_Align          &ACADE_Wire           &trans  &trans  &trans  &trans  &trans
-                                   &trans                &trans                &trans  &trans
+&trans  &kp LC(W)       &kp LC(E)          &ACADE_SavePrevious   &ACADE_SaveNext       &trans  &trans  &trans  &trans  &trans
+&trans  &ACADE_Justify  &ACADE_edit        &ACADE_SaveZoomClose  &ACADE_CloseNoSave    &trans  &trans  &trans  &trans  &trans
+&trans  &ACADE_Surf     &ACADE_FlipWireNo  &ACADE_Align          &ACADE_Wire           &trans  &trans  &trans  &trans  &trans
+                                           &trans                &trans                &trans  &trans
+            >;
+        };
+
+        Studio5000 {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans    &trans  &trans
+            >;
+        };
+
+        Taskbar_Hotkeys {
+            bindings = <
+&trans        &trans      &trans      &trans      &trans        &trans      &trans      &trans      &trans      &trans
+&paint_macro  &Taskbar_2  &Taskbar_3  &Taskbar_4  &Taskbar_5    &Taskbar_6  &Taskbar_7  &Taskbar_8  &Taskbar_9  &Taskbar_10
+&trans        &trans      &trans      &trans      &trans        &trans      &trans      &trans      &trans      &trans
+                                      &trans      &trans        &trans      &trans
             >;
         };
     };
