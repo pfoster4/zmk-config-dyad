@@ -148,13 +148,24 @@
             bindings = <&CtrlAltDel>;
             key-positions = <0 20 10>;
         };
+
+        insert {
+            bindings = <&kp INSERT>;
+            key-positions = <9 8>;
+        };
+
+        TabEnter {
+            bindings = <&ACADE_TabEnter>;
+            key-positions = <13 12>;
+            layers = <1>;
+        };
     };
 
     macros {
         pin_macro: pin_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LS(M) &kp I &kp S &kp S &kp LS(D) &kp A &kp I &kp S &kp Y &kp MINUS &kp N1 &kp N2 &kp N3>;
+            bindings = <&kp LS(M) &kp I &kp S &kp S &kp LS(D) &kp A &kp I &kp S &kp Y &kp MINUS &kp N1 &kp N2 &kp N3 &kp NUMBER_4 &kp N5>;
             label = "PIN_MACRO";
             wait-ms = <25>;
             tap-ms = <25>;
@@ -521,6 +532,13 @@
             wait-ms = <50>;
             tap-ms = <50>;
         };
+
+        ACADE_TabEnter: ACADE_TabEnter {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp TAB &kp ENTER>;
+            label = "ACADE_TABENTER";
+        };
     };
 
     keymap {
@@ -534,10 +552,10 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&mt TAB Q    &kp W  &kp E  &kp R      &kp T          &kp Y      &kp U              &kp I                &kp O            &kp P
-&mt LSHFT A  &kp S  &kp D  &kp F      &kp G          &kp H      &mt RIGHT_SHIFT J  &mt RIGHT_CONTROL K  &mt RIGHT_ALT L  &kp APOS
-&mt LCTRL Z  &kp X  &kp C  &kp V      &lt 8 B        &kp N      &kp M              &kp COMMA            &kp PERIOD       &kp SLASH
-                           &lt 2 ESC  &lt 1 ENTER    &kp SPACE  &lt 3 BACKSPACE
+&mt TAB Q    &kp W  &kp E  &kp R      &kp T        &kp Y      &kp U              &kp I                &kp O            &kp P
+&mt LSHFT A  &kp S  &kp D  &kp F      &kp G        &kp H      &mt RIGHT_SHIFT J  &mt RIGHT_CONTROL K  &mt RIGHT_ALT L  &kp APOS
+&mt LCTRL Z  &kp X  &kp C  &kp V      &lt 8 B      &kp N      &kp M              &kp COMMA            &kp PERIOD       &kp SLASH
+                           &lt 2 ESC  &lt 1 ENTER  &kp SPACE  &lt 3 BACKSPACE
             >;
         };
 
@@ -549,83 +567,92 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp PAGE_UP    &kp HOME        &kp UP_ARROW     &kp END            &kp TAB            &kp LEFT_BRACKET  &kp N7        &kp N8        &kp N9        &kp RIGHT_BRACKET
-&kp PAGE_DOWN  &kp LEFT_ARROW  &kp DOWN_ARROW   &kp RIGHT_ARROW    &mt LC(V) LC(X)    &kp EQUAL         &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp SEMICOLON
-&kp LEFT_ALT   &caps_word      &Brackets_macro  &CB_History_macro  &mt LC(V) LC(C)    &kp BACKSLASH     &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp GRAVE
-                                                &trans             &trans             &kp N0            &kp PERIOD
+&kp PAGE_UP    &kp HOME        &kp UP_ARROW     &kp END            &kp TAB          &kp LEFT_BRACKET  &kp N7        &kp N8        &kp N9        &kp RIGHT_BRACKET
+&kp PAGE_DOWN  &kp LEFT_ARROW  &kp DOWN_ARROW   &kp RIGHT_ARROW    &mt LC(V) LC(X)  &kp EQUAL         &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp SEMICOLON
+&kp LEFT_ALT   &caps_word      &Brackets_macro  &CB_History_macro  &mt LC(V) LC(C)  &kp BACKSLASH     &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp GRAVE
+                                                &trans             &trans           &kp N0            &kp PERIOD
             >;
         };
 
         symbol_layer {
             bindings = <
-&trans                &trans        &kp LC(W)          &kp LC(E)         &kp LC(F4)    &kp LEFT_BRACE        &kp AMPERSAND          &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_BRACE
-&TextExtractor_macro  &trans        &MoveLeft_macro    &MoveRight_macro  &trans        &kp PLUS              &kp DOLLAR             &kp PERCENT   &kp CARET             &kp COLON
-&trans                &kp LS(HOME)  &SelectLine_macro  &kp LS(END)       &trans        &kp PIPE              &kp EXCLAMATION        &kp AT_SIGN   &kp HASH              &kp TILDE
-                                                       &trans            &trans        &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
+&trans                &trans        &kp LC(W)          &kp LC(E)         &kp LC(F4)  &kp LEFT_BRACE        &kp AMPERSAND          &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_BRACE
+&TextExtractor_macro  &trans        &MoveLeft_macro    &MoveRight_macro  &trans      &kp PLUS              &kp DOLLAR             &kp PERCENT   &kp CARET             &kp COLON
+&trans                &kp LS(HOME)  &SelectLine_macro  &kp LS(END)       &trans      &kp PIPE              &kp EXCLAMATION        &kp AT_SIGN   &kp HASH              &kp TILDE
+                                                       &trans            &trans      &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
             >;
         };
 
         function_layer {
             bindings = <
-&bt BT_PRV      &trans  &bootloader  &trans  &bt BT_NXT    &kp PRINTSCREEN  &kp F7  &kp F8  &kp F9  &kp F12
-&trans          &trans  &soft_off    &trans  &trans        &kp SCROLLLOCK   &kp F4  &kp F5  &kp F6  &kp F11
-&bt BT_CLR_ALL  &trans  &trans       &trans  &trans        &kp PAUSE_BREAK  &kp F1  &kp F2  &kp F3  &kp F10
-                                     &trans  &trans        &trans           &trans
+&bt BT_PRV      &trans  &bootloader  &trans  &bt BT_NXT  &kp PRINTSCREEN  &kp F7  &kp F8  &kp F9  &kp F12
+&trans          &trans  &soft_off    &trans  &trans      &kp SCROLLLOCK   &kp F4  &kp F5  &kp F6  &kp F11
+&bt BT_CLR_ALL  &trans  &trans       &trans  &trans      &kp PAUSE_BREAK  &kp F1  &kp F2  &kp F3  &kp F10
+                                     &trans  &trans      &trans           &trans
             >;
         };
 
         mouse_layer {
             bindings = <
-&msc SCRL_UP    &msc SCRL_LEFT  &mmv MOVE_UP    &msc SCRL_RIGHT  &trans        &trans  &trans     &trans     &trans     &trans
-&msc SCRL_DOWN  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans        &trans  &mkp LCLK  &mkp RCLK  &mkp MCLK  &trans
-&kp K_UNDO      &kp K_CUT       &kp K_COPY      &kp K_PASTE      &kp K_REDO    &trans  &trans     &trans     &trans     &trans
-                                                &mkp LCLK        &mkp RCLK     &trans  &trans
+&msc SCRL_UP    &msc SCRL_LEFT  &mmv MOVE_UP    &msc SCRL_RIGHT  &trans      &trans  &trans     &trans     &trans     &trans
+&msc SCRL_DOWN  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans      &trans  &mkp LCLK  &mkp RCLK  &mkp MCLK  &trans
+&kp K_UNDO      &kp K_CUT       &kp K_COPY      &kp K_PASTE      &kp K_REDO  &trans  &trans     &trans     &trans     &trans
+                                                &mkp LCLK        &mkp RCLK   &trans  &trans
             >;
         };
 
         navigation_layer {
             bindings = <
-&kp PAGE_UP    &kp HOME        &kp UP_ARROW    &kp END      &kp INSERT      &trans  &trans  &trans  &trans  &trans
-&kp PAGE_DOWN  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT    &kp CAPSLOCK    &trans  &trans  &trans  &trans  &trans
-&kp K_UNDO     &kp K_CUT       &kp K_COPY      &kp K_PASTE  &kp K_REDO      &trans  &trans  &trans  &trans  &trans
-                                               &trans       &trans          &trans  &trans
+&kp PAGE_UP    &kp HOME        &kp UP_ARROW    &kp END      &kp INSERT    &trans  &trans  &trans  &trans  &trans
+&kp PAGE_DOWN  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT    &kp CAPSLOCK  &trans  &trans  &trans  &trans  &trans
+&kp K_UNDO     &kp K_CUT       &kp K_COPY      &kp K_PASTE  &kp K_REDO    &trans  &trans  &trans  &trans  &trans
+                                               &trans       &trans        &trans  &trans
             >;
         };
 
         media_layer {
             bindings = <
-&trans  &kp K_PREVIOUS  &kp C_VOLUME_UP    &kp K_NEXT          &trans              &trans  &trans  &trans  &trans  &trans
-&trans  &kp C_REWIND    &kp C_VOLUME_DOWN  &kp C_FAST_FORWARD  &trans              &trans  &trans  &trans  &trans  &trans
-&trans  &trans          &kp K_MUTE         &trans              &trans              &trans  &trans  &trans  &trans  &trans
-                                           &kp K_MUTE          &kp K_PLAY_PAUSE    &trans  &trans
+&trans  &kp K_PREVIOUS  &kp C_VOLUME_UP    &kp K_NEXT          &trans            &trans  &trans  &trans  &trans  &trans
+&trans  &kp C_REWIND    &kp C_VOLUME_DOWN  &kp C_FAST_FORWARD  &trans            &trans  &trans  &trans  &trans  &trans
+&trans  &trans          &kp K_MUTE         &trans              &trans            &trans  &trans  &trans  &trans  &trans
+                                           &kp K_MUTE          &kp K_PLAY_PAUSE  &trans  &trans
             >;
         };
 
         ACADE {
             bindings = <
-&trans  &kp LC(W)       &kp LC(E)          &ACADE_SavePrevious   &ACADE_SaveNext       &trans  &trans  &trans  &trans  &trans
-&trans  &ACADE_Justify  &ACADE_edit        &ACADE_SaveZoomClose  &ACADE_CloseNoSave    &trans  &trans  &trans  &trans  &trans
-&trans  &ACADE_Surf     &ACADE_FlipWireNo  &ACADE_Align          &ACADE_Wire           &trans  &trans  &trans  &trans  &trans
-                                           &trans                &trans                &trans  &trans
+&trans  &kp LC(W)       &kp LC(E)          &ACADE_SavePrevious   &ACADE_SaveNext     &trans  &trans  &trans  &trans  &trans
+&trans  &ACADE_Justify  &ACADE_edit        &ACADE_SaveZoomClose  &ACADE_CloseNoSave  &trans  &trans  &trans  &trans  &trans
+&trans  &ACADE_Surf     &ACADE_FlipWireNo  &ACADE_Align          &ACADE_Wire         &trans  &trans  &trans  &trans  &trans
+                                           &trans                &trans              &trans  &trans
             >;
         };
 
         Studio5000 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans    &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans  &trans
             >;
         };
 
         Taskbar_Hotkeys {
             bindings = <
-&trans        &trans      &trans      &trans      &trans        &trans      &trans      &trans      &trans      &trans
-&paint_macro  &Taskbar_2  &Taskbar_3  &Taskbar_4  &Taskbar_5    &Taskbar_6  &Taskbar_7  &Taskbar_8  &Taskbar_9  &Taskbar_10
-&trans        &trans      &trans      &trans      &trans        &trans      &trans      &trans      &trans      &trans
-                                      &trans      &trans        &trans      &trans
+&trans        &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans
+&paint_macro  &Taskbar_2  &Taskbar_3  &Taskbar_4  &Taskbar_5  &Taskbar_6  &Taskbar_7  &Taskbar_8  &Taskbar_9  &Taskbar_10
+&trans        &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans
+                                      &trans      &trans      &trans      &trans
             >;
+        };
+    };
+
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+
+        Test {
+            if-layers = <1>;
+            then-layer = <2>;
         };
     };
 };
