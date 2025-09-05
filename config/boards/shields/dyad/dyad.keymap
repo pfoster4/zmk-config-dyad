@@ -536,7 +536,12 @@
         ACADE_TabEnter: ACADE_TabEnter {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp TAB &kp ENTER>;
+            bindings =
+                <&macro_tap>,
+                <&kp TAB>,
+                <&macro_wait_time 50>,
+                <&kp ENTER>;
+
             label = "ACADE_TABENTER";
         };
     };
